@@ -32,6 +32,6 @@ action "decrement pixe.la" {
 workflow "Decrement Pixela if Pull Request is closed" {
   on = "pull_request"
   resolves = [
-    "increment pixe.la",
+    "decrement pixe.la",
   ]
 }
