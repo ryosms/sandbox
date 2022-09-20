@@ -3,8 +3,8 @@ on:
   push:
     branches:
       - master
-    # paths:
-    #   - labels.yaml
+    paths:
+      - .github/labels.yaml
 
 jobs:
   update_labels:
