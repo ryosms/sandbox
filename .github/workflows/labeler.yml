@@ -2,7 +2,7 @@ name: Update labels
 on:
   push:
     branches:
-      - master:
+      - master
     paths:
       - labels.yaml
 
