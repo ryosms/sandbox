@@ -23,9 +23,6 @@ labels:
   - name: wontfix
     description: This will not be worked on
     color: ffffff
-  - name: test
-    desctiption: This is test
-    color: E0E0E0
 repos:
   - name: ryosms/sandbox
     labels:
@@ -37,4 +34,3 @@ repos:
     - invalid
     - question
     - wontfix
-    - test
