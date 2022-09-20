@@ -23,7 +23,7 @@ labels:
   - name: wontfix
     description: This will not be worked on
     color: ffffff
-  - name: test
+  - name: test1
     desctiption: This is test
     color: E0E0E0
 repos:
