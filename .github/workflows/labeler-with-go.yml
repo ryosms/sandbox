@@ -15,7 +15,7 @@ jobs:
       - name: Setup labeler and sync labels
         run: go install github.com/b4b4r07/github-labeler@master
       - name: Sync labels
-        run: `go env GOPATH`/bin/github-labeler --config labels.yml
+        run: $(go env GOPATH)/bin/github-labeler --config labels.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
