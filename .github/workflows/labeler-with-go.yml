@@ -1,0 +1,20 @@
+name: Update labels with go
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  update_labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Go
+        uses: actions/setup-go@v3
+      - name: Setup labeler
+        run: go install github.com/b4b4r07/github-labeler@master
+      - name: Sync labels
+        run: github-labeler
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
