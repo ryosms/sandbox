@@ -12,9 +12,9 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Go
         uses: actions/setup-go@v3
-      - name: Setup labeler
-        run: go install github.com/b4b4r07/github-labeler@master
-      - name: Sync labels
-        run: github-labeler
+      - name: Setup labeler and sync labels
+        run: 
+          - go install github.com/b4b4r07/github-labeler@master
+          - github-labeler
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
