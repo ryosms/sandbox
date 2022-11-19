@@ -36,7 +36,6 @@ jobs:
           done
       - name: check files
         run: |
-          ls
           cat ${{ steps.separate-title.outputs.file_name }}
       - name: Create Issue
         uses: JasonEtco/create-an-issue@v2
