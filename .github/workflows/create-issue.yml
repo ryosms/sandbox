@@ -34,7 +34,7 @@ jobs:
           done
       - name: Create Issue
         uses: actions-ecosystem/action-create-issue@v1
-        if: steps.separate-title.outputs.file_name != ""
+        if: steps.separate-title.outputs.file_name
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           title: ${{ steps.separate-title.outputs.title }}
