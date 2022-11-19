@@ -18,15 +18,9 @@ jobs:
       - name: List up added files
         uses: tj-actions/changed-files@v34
         id: list-up-files
-      - name: Echo result
-        run: |
-          echo "Added files: ${{ steps.list-up-files.outputs.added_files }}"
-          echo "Changed files: ${{ steps.list-up-files.outputs.all_changed_and_modified_files }}"
-          echo "Any changed?: ${{ steps.list-up-files.outputs.any_changed }}"
-          echo "Any modified?: ${{ steps.list-up-files.outputs.any_modified }}"
       - name: Separete title and body from added file
         id: separate-title
-        if: steps.list-up-files.outputs.any_changed == 'true'
+        if: steps.list-up-files.outputs.added_files
         run: |
           for file in ${{ steps.list-up-files.outputs.added_files }}; do
             echo "$file was added"
