@@ -37,4 +37,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           title: ${{ steps.separate-title.outputs.title }}
-          body: $ISSUE_BODY
+          body: ${{ ISSUE_BODY }}
