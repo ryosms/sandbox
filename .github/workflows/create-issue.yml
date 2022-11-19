@@ -27,7 +27,7 @@ jobs:
             file_name=issue_template.md
             echo "file_name=${file_name}" >> $GITHUB_OUTPUT
 
-            echo "title=`head -n 1 ${file}`" >> $GITHUB_OUTPUT
+            title=`head -n 1 ${file}`
             echo "---" > $file_name
             echo "title: ${title}" >> $file_name
             echo "---" >> $file_name
@@ -38,6 +38,6 @@ jobs:
         uses: JasonEtco/create-an-issue@v2
         if: steps.separate-title.outputs.file_name
         with:
-          filename: ${{ steps.separate-title.outputs.title }}
+          filename: ${{ steps.separate-title.outputs.file_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
