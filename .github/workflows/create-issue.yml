@@ -18,9 +18,9 @@ jobs:
       - name: List up added files
         uses: tj-actions/changed-files@v34
         id: list-up-files
-          with: 
-            files: |
-              **.md
+        with: 
+          files: |
+            **.md
       - name: Separete title and body from added file
         id: separate-title
         if: steps.list-up-files.outputs.any_changed == 'true'
