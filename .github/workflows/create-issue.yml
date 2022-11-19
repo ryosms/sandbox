@@ -26,6 +26,11 @@ jobs:
             echo "$file was added"
             echo "file_name=${file}" >> $GITHUB_OUTPUT
             echo "title=`head -n 1 ${file}`" >> $GITHUB_OUTPUT
+            body=`cat $file`
+            body="${body//'%'/'%25'}"
+            description="${body//$'\n'/'%0A'}"
+            description="${body//$'\r'/'%0D'}"
+            echo "body=${body}" >> $GITHUB_OUTPUT
             break;
           done
       - name: Create Issue
@@ -34,5 +39,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           title: ${{ steps.separate-title.outputs.title }}
-          body: |
-            cat $${{ steps.separate-title.outputs.file_name }}
+          body: ${{ steps.separate-title.outputs.body }}
