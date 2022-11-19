@@ -1,0 +1,40 @@
+name: Create issue when PR is merged.
+on:
+  pull_request:
+    branches:
+      - master
+    types: 
+      - closed
+
+jobs:
+  create_issue:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: List context
+        run: echo ${{ github }}
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: List up added files
+        uses: tj-actions/changed-files@v34
+        id: list-up-files
+          files: |
+            **.md
+      - name: Separete title and body from added file
+        id: separate-title
+        if: steps.list-up-files.outputs.any_changed == 'true'
+        run: |
+          for file in ${{ steps.list-up-files.outputs.added_files }}; do
+            echo "$file was added"
+            echo "file_name=${file}" >> $GITHUB_OUTPUT
+            echo "title=`head -n 1 ${file}`" >> $GITHUB_OUTPUT
+            echo "body=`cat ${file}" >> $GITHUB_OUTPUT
+            break;
+          done
+      - name: Create Issue
+        uses: actions-ecosystem/action-create-issue@v1
+        if: steps.separate-title.outputs.file_name != ""
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          title: ${{ steps.separate-title.outputs.title }}
+          body: ${{ steps.separate-title.outputs.body }}
