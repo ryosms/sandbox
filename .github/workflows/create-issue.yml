@@ -24,19 +24,9 @@ jobs:
         run: |
           for file in ${{ steps.list-up-files.outputs.added_files }}; do
             echo "$file was added"
-            file_name=issue_template.md
-            echo "file_name=${file_name}" >> $GITHUB_OUTPUT
-
-            title=`head -n 1 ${file}`
-            echo "---" > $file_name
-            echo "title: ${title}" >> $file_name
-            echo "---" >> $file_name
-            cat $file >> $file_name
+            echo "file_name=${file}" >> $GITHUB_OUTPUT
             break;
           done
-      - name: check files
-        run: |
-          cat ${{ steps.separate-title.outputs.file_name }}
       - name: Create Issue
         uses: JasonEtco/create-an-issue@v2
         if: steps.separate-title.outputs.file_name
