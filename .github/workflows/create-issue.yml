@@ -36,4 +36,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           title: ${{ steps.separate-title.outputs.title }}
           body: |
-            cat $${{ steps separate-title.outputs.file_name }}
+            cat $${{ steps.separate-title.outputs.file_name }}
