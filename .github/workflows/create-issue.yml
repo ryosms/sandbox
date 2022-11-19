@@ -34,6 +34,10 @@ jobs:
             cat $file >> $file_name
             break;
           done
+      - name: check files
+        run: |
+          ls
+          cat ${{ steps.separate-title.outputs.file_name }}
       - name: Create Issue
         uses: JasonEtco/create-an-issue@v2
         if: steps.separate-title.outputs.file_name
