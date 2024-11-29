@@ -7,14 +7,6 @@ on:
       - ".github/workflows/terraform/terraform.yml"
 
 jobs:
-  terraform:
-    name: 'terraform test'
-    runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        shell: bash
-
   call-terraform:
     uses: ./.github/workflows/terraform.yml
     with:
