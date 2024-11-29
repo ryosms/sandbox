@@ -16,7 +16,7 @@ jobs:
         shell: bash
 
   call-terraform:
-    uses: ./.github/workflows/terraform/terraform.yml
+    uses: ./.github/workflows/terraform.yml
     with:
       work_dir: md
       env: dev
